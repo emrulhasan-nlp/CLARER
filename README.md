@@ -30,14 +30,16 @@ Your directory should look like this:
 │   ├── amazonTV/
 │   │   ├── Movies_and_TV.json
 │   │   └── review.pickle
-│   |── yelp/
-│   |    ├── yelp_academic_dataset_review.json
-│   |   └── review.pickle
-|   |
-|---prepdata/
-|   |--tripAdvisor/tripdata.csv
-|   |--amazonTV/amz_tv.csv
-|   |--yelp/yelp.csv
+│   └── yelp/
+│       ├── yelp_academic_dataset_review.json
+│       └── review.pickle
+├── prepdata/
+│   ├── tripAdvisor/
+│   │   └── tripdata.csv
+│   ├── amazonTV/
+│   │   └── amz_tv.csv
+│   └── yelp/
+│       └── yelp.csv
 ├── trip_preprocessing.py
 ├── amztv_preprocessing.py
 ├── yelp_preprocessing.py
@@ -67,7 +69,7 @@ After preprocessing, use the following command to run the model:
 python NRTPlus.py --dataset yelp.csv
 ```
 
-> Replace `yelp.csv` with `tripdata.csv` or `amazon_TV.csv` based on the dataset you're using.
+> Replace `yelp.csv` with `tripdata.csv` or `amz_tv.csv` based on the dataset you're using.
 
 ---
 
@@ -86,6 +88,7 @@ pip install -r requirements.txt
 ```
 CLARER/
 ├── rawdata/
+├── prepdata/
 ├── *.py              # Scripts for preprocessing and training
 ├── README.md         # This file
 └── requirements.txt  # Dependencies
