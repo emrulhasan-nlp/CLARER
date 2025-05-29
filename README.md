@@ -30,9 +30,14 @@ Your directory should look like this:
 │   ├── amazonTV/
 │   │   ├── Movies_and_TV.json
 │   │   └── review.pickle
-│   └── yelp/
-│       ├── yelp_academic_dataset_review.json
-│       └── review.pickle
+│   |── yelp/
+│   |    ├── yelp_academic_dataset_review.json
+│   |   └── review.pickle
+|   |
+|---prepdata/
+|   |--tripAdvisor/tripdata.csv
+|   |--amazonTV/amz_tv.csv
+|   |--yelp/yelp.csv
 ├── trip_preprocessing.py
 ├── amztv_preprocessing.py
 ├── yelp_preprocessing.py
