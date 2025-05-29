@@ -1,24 +1,32 @@
 # CLARER
 
-Contrastive Learning for Aspect Representation towards Explainable Recommendation
+**Contrastive Learning for Aspect Representation towards Explainable Recommendation**
 
-# How to run the model
+CLARER is a model that utilizes contrastive learning to generate aspect-based representations from user reviews. These representations are then used for explainable recommendation tasks across different domains such as hotels, TVs, and restaurants.
 
-# Step 1
+---
 
-Download the dataset from the [Link](https://drive.google.com/drive/folders/1yB-EFuApAOJ0RzTI0VfZ0pignytguU0_) and place review.pickle data inside the tripAdvisor, amazonTV and yelp folders.
-Example directory would look like.
---rawdata/tripAdvisor/tripdata.csv
---rawdata/amazonTV/amazon_TV.csv
---rawdata/yelp/yelp_review.csv
+## 🚀 How to Run the Model
 
-# Step 2- Preprocess the datasets
+### Step 1: Download the Dataset
 
-Run the following scripts to preprocess the datasets
---Python trip_preprocessing.py
---amztv_preprocessing.py
---yelp_preprocessing.py
+Download the dataset from the following Google Drive link:  
+🔗 [Dataset Link](https://drive.google.com/drive/folders/1yB-EFuApAOJ0RzTI0VfZ0pignytguU0_)
 
-# Step 3
+Place the `review.pickle` file inside each of the following folders:
 
-# Top achieve the
+- `tripAdvisor`
+- `amazonTV`
+- `yelp`
+
+---
+
+### Step 2: Preprocess the Datasets
+
+Run the following scripts to preprocess the datasets. These scripts generate intermediate data required for model training.
+
+```bash
+python trip_preprocessing.py
+python amztv_preprocessing.py
+python yelp_preprocessing.py
+```
