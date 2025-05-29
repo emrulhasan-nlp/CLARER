@@ -25,13 +25,13 @@ Your directory should look like this:
 .
 ├── rawdata/
 │   ├── tripAdvisor/
-│   │   ├── tripdata.csv
+│   │   ├── OriginalReviews.json
 │   │   └── review.pickle
 │   ├── amazonTV/
-│   │   ├── amazon_TV.csv
+│   │   ├── Movies_and_TV.json
 │   │   └── review.pickle
 │   └── yelp/
-│       ├── yelp_review.csv
+│       ├── yelp_academic_dataset_review.json
 │       └── review.pickle
 ├── trip_preprocessing.py
 ├── amztv_preprocessing.py
@@ -94,6 +94,6 @@ If you have any questions, suggestions, or want to contribute, feel free to open
 
 ---
 
-## 📜 License
+<!-- ## 📜 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for details. -->
