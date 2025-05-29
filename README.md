@@ -40,10 +40,22 @@ Your directory should look like this:
 │   │   └── amz_tv.csv
 │   └── yelp/
 │       └── yelp.csv
-├── trip_preprocessing.py
-├── amztv_preprocessing.py
-├── yelp_preprocessing.py
-├── NRTPlus.py
+├──codes/
+|    ├── trip_preprocessing.py
+|    ├── amztv_preprocessing.py
+|    ├── yelp_preprocessing.py
+|    ├── NRTPlus.py
+|--results/
+│   ├── tripAdvisor/
+│   │   └── tripdmodel.pth
+|   |   └── trip.logs
+│   ├── amazonTV/
+│   │   └── amz_tvmodel.pth
+|   |   └── amz_tv.logs
+│   └── yelp/
+│       |── yelpmodel.pth
+|       └── yelp.logs
+|
 └── README.md
 ```
 
