@@ -37,11 +37,11 @@ def convert_json_to_csv(json_file_path, csv_file_path):
 
 # Convert the json to csv file
 json_file_path = '../rawdata/yelp/yelp_academic_dataset_review.json'
-csv_file_path = '../rawdata/yelp/yelp_academic_dataset_review.csv'
+csv_file_path = '../rawdata/yelp/yelp_review.csv'
 convert_json_to_csv(json_file_path, csv_file_path)
 print(f"Conversion complete. CSV file saved to: {csv_file_path}")
 
-df=pd.read_csv('../rawdata/yelp/yelp_academic_dataset_review.csv')
+df=pd.read_csv('../rawdata/yelp/yelp_review.csv')
 df=df.rename(columns={'user_id':'user', "business_id":'item', 'stars': 'rating'})
 
 merged_df = pd.merge(yelp_revdf,df, on=['user', 'item'], how='inner')

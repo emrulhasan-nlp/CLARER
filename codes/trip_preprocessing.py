@@ -90,7 +90,7 @@ for line in data:
   new_dct={'user':user,'item':item,'explanation':xpln}
   explanations.append(new_dct)
 
-file_name = "../rawdata/tripAdvisor/explanation.csv"
+file_name = "../rawdata/tripAdvisor/tripdata.csv"
 
 # Writing to the CSV file
 with open(file_name, mode='w', newline='') as file:
@@ -99,7 +99,7 @@ with open(file_name, mode='w', newline='') as file:
     writer.writerows(explanations)  # Write the data rows
 
 print(f"CSV file '{file_name}' has been created successfully!")
-df=pd.read_csv('../rawdata/tripAdvisor/explanation.csv')
+df=pd.read_csv('../rawdata/tripAdvisor/tripdata.csv')
 
 ################## Merge explanation and review data to get the clean trip advisor data with user, item, review, rating, criteria rating, and explanation############
 
