@@ -18,6 +18,18 @@ Place the `review.pickle` file inside each of the following folders:
 - `tripAdvisor`
 - `amazonTV`
 - `yelp`
+  Your directory should look like this:
+
+rawdata/
+├── tripAdvisor/
+│ ├── tripdata.csv
+│ └── review.pickle
+├── amazonTV/
+│ ├── amazon_TV.csv
+│ └── review.pickle
+└── yelp/
+├── yelp_review.csv
+└── review.pickle
 
 ---
 
