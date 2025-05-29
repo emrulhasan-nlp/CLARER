@@ -19,29 +19,81 @@ Place the `review.pickle` file inside each of the following folders:
 - `amazonTV`
 - `yelp`
 
----
-
 Your directory should look like this:
 
+```
 .
 ├── rawdata/
-│ ├── tripAdvisor/
-│ ├── amazonTV/
-│ └── yelp/
+│   ├── tripAdvisor/
+│   │   ├── tripdata.csv
+│   │   └── review.pickle
+│   ├── amazonTV/
+│   │   ├── amazon_TV.csv
+│   │   └── review.pickle
+│   └── yelp/
+│       ├── yelp_review.csv
+│       └── review.pickle
 ├── trip_preprocessing.py
 ├── amztv_preprocessing.py
 ├── yelp_preprocessing.py
 ├── NRTPlus.py
 └── README.md
+```
 
 ---
 
 ### Step 2: Preprocess the Datasets
 
-Run the following scripts to preprocess the datasets. These scripts generate intermediate data required for model training.
+Run the following scripts to preprocess the datasets. These scripts generate intermediate data required for model training:
 
 ```bash
 python trip_preprocessing.py
 python amztv_preprocessing.py
 python yelp_preprocessing.py
 ```
+
+---
+
+### Step 3: Run the Model
+
+After preprocessing, use the following command to run the model:
+
+```bash
+python NRTPlus.py --dataset yelp.csv
+```
+
+> Replace `yelp.csv` with `tripdata.csv` or `amazon_TV.csv` based on the dataset you're using.
+
+---
+
+## 📦 Requirements
+
+Install the required dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🧠 Project Structure
+
+```
+CLARER/
+├── rawdata/
+├── *.py              # Scripts for preprocessing and training
+├── README.md         # This file
+└── requirements.txt  # Dependencies
+```
+
+---
+
+## 📫 Contact
+
+If you have any questions, suggestions, or want to contribute, feel free to open an issue or submit a pull request.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
