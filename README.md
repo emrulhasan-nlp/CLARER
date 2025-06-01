@@ -35,11 +35,14 @@ Your directory should look like this:
 │       └── review.pickle
 ├── prepdata/
 │   ├── tripAdvisor/
-│   │   └── tripdata.csv
+│   │   ├── tripdata.csv
+|   |   └── trip_emb.npy
 │   ├── amazonTV/
-│   │   └── amz_tv.csv
+│   │   ├── amz_tv.csv
+|   |   └── amz_emb.npy
 │   └── yelp/
-│       └── yelp.csv
+│       ├── yelp.csv
+|       └── yelp_emb.npy
 ├──codes/
 |    ├── trip_preprocessing.py
 |    ├── amztv_preprocessing.py
