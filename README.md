@@ -15,7 +15,7 @@ Download the dataset from the following Google Drive link:
 
 Place the `review.pickle` file inside each of the following folders:
 
-- `tripr`
+- `trip`
 - `amzMT`
 - `yelp`
 
@@ -35,7 +35,7 @@ Your directory should look like this:
 │       └── review.pickle
 ├── prepdata/
 │   ├── trip/
-│   │   ├── tripdata.csv
+│   │   ├── trip.csv
 |   |   └── trip_emb.npy
 │   ├── amzMT/
 │   │   ├── amzMT.csv
