@@ -19,6 +19,7 @@ Place the `review.pickle` file inside each of the following folders:
 - `amzMT`
 - `yelp`
 
+Please note that the only tripadvisor dataset has both the explanation and original review data. However, for amazMT and yelp dataset has only explanation. Corresponding original review datasets can be found in https://business.yelp.com/data/resources/open-dataset/ and https://cseweb.ucsd.edu/~jmcauley/datasets/amazon_v2/ for yelp and amazon review respectively.
 Your directory should look like this:
 
 ```
