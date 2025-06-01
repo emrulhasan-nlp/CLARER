@@ -1,0 +1,589 @@
+2025-03-03 04:42:35.214367: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-03 04:42:35.273504: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-03 04:42:36.495036: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+
+Dataset: amz_mt
+5233 2873
+False
+True
+Training started
+False_Truebest_model.pth
+Epoch: 1, Train Loss: 9.4279, Val Loss: 7.8442
+Best model saved!
+Epoch: 2, Train Loss: 7.7140, Val Loss: 7.5597
+Best model saved!
+Epoch: 3, Train Loss: 7.4250, Val Loss: 7.3418
+Best model saved!
+Epoch: 4, Train Loss: 7.1720, Val Loss: 7.2094
+Best model saved!
+Epoch: 5, Train Loss: 6.9788, Val Loss: 7.1057
+Best model saved!
+Epoch: 6, Train Loss: 6.7969, Val Loss: 7.0364
+Best model saved!
+Epoch: 7, Train Loss: 6.6331, Val Loss: 7.0699
+Early stopping counter: 1/3
+Epoch: 8, Train Loss: 6.4952, Val Loss: 6.9883
+Best model saved!
+Epoch: 9, Train Loss: 6.3573, Val Loss: 6.9804
+Best model saved!
+Epoch: 10, Train Loss: 6.2256, Val Loss: 6.9710
+Best model saved!
+Epoch: 11, Train Loss: 6.1152, Val Loss: 6.9681
+Best model saved!
+Epoch: 12, Train Loss: 6.0100, Val Loss: 6.8959
+Best model saved!
+Epoch: 13, Train Loss: 5.8864, Val Loss: 6.8773
+Best model saved!
+Epoch: 14, Train Loss: 5.7941, Val Loss: 6.8551
+Best model saved!
+Epoch: 15, Train Loss: 5.6893, Val Loss: 6.8776
+Early stopping counter: 1/3
+Epoch: 16, Train Loss: 5.5948, Val Loss: 6.9201
+Early stopping counter: 2/3
+Epoch: 17, Train Loss: 5.5071, Val Loss: 6.8820
+Early stopping counter: 3/3
+Early stopping triggered. Stopping training.
+
+Time taken for training and valiation, hours:0.0, minutes:17.0
+Mean Squared Error (MSE): 1.3442
+Root Mean Squared Error (RMSE): 1.1594
+Mean Absolute Error (MAE): 0.8577
+False True
+
+2025-03-03 08:11:28.555896: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-03 08:11:28.617052: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-03 08:11:29.614334: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+
+Dataset: amz_mt
+7209 3018
+False
+True
+Training started
+False_Truebest_model.pth
+Epoch: 1, Train Loss: 7.4018, Val Loss: 6.6514
+Best model saved!
+Epoch: 2, Train Loss: 6.5158, Val Loss: 6.2939
+Best model saved!
+Epoch: 3, Train Loss: 6.2081, Val Loss: 6.1611
+Best model saved!
+Epoch: 4, Train Loss: 6.0000, Val Loss: 5.9939
+Best model saved!
+Epoch: 5, Train Loss: 5.8324, Val Loss: 5.9096
+Best model saved!
+Epoch: 6, Train Loss: 5.6957, Val Loss: 5.8074
+Best model saved!
+Epoch: 7, Train Loss: 5.5786, Val Loss: 5.7791
+Best model saved!
+Epoch: 8, Train Loss: 5.4709, Val Loss: 5.6892
+Best model saved!
+Epoch: 9, Train Loss: 5.3750, Val Loss: 5.7010
+Early stopping counter: 1/3
+Epoch: 10, Train Loss: 5.2831, Val Loss: 5.6374
+Best model saved!
+Epoch: 11, Train Loss: 5.1962, Val Loss: 5.5636
+Best model saved!
+Epoch: 12, Train Loss: 5.1110, Val Loss: 5.5392
+Best model saved!
+Epoch: 13, Train Loss: 5.0315, Val Loss: 5.5047
+Best model saved!
+Epoch: 14, Train Loss: 4.9459, Val Loss: 5.4689
+Best model saved!
+Epoch: 15, Train Loss: 4.8595, Val Loss: 5.3976
+Best model saved!
+Epoch: 16, Train Loss: 4.7707, Val Loss: 5.3201
+Best model saved!
+Epoch: 17, Train Loss: 4.6816, Val Loss: 5.2515
+Best model saved!
+Epoch: 18, Train Loss: 4.5925, Val Loss: 5.2560
+Early stopping counter: 1/3
+Epoch: 19, Train Loss: 4.4988, Val Loss: 5.1272
+Best model saved!
+Epoch: 20, Train Loss: 4.4050, Val Loss: 5.0650
+Best model saved!
+
+Time taken for training and valiation, hours:3.0, minutes:20.0
+Mean Squared Error (MSE): 0.9986
+Root Mean Squared Error (RMSE): 0.9993
+Mean Absolute Error (MAE): 0.7005
+False True
+2025-03-03 23:51:20.644465: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-03 23:51:20.705823: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-03 23:51:21.698682: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+
+Dataset: amz_mt
+7209 3018
+False
+False
+Training started
+False_Falsebest_model.pth
+Epoch: 1, Train Loss: 6.6977, Val Loss: 5.9502
+Best model saved!
+Epoch: 2, Train Loss: 5.8276, Val Loss: 5.6128
+Best model saved!
+Epoch: 3, Train Loss: 5.5203, Val Loss: 5.4074
+Best model saved!
+Epoch: 4, Train Loss: 5.3113, Val Loss: 5.2846
+Best model saved!
+Epoch: 5, Train Loss: 5.1470, Val Loss: 5.1733
+Best model saved!
+Epoch: 6, Train Loss: 5.0103, Val Loss: 5.0931
+Best model saved!
+Epoch: 7, Train Loss: 4.8867, Val Loss: 5.0655
+Best model saved!
+Epoch: 8, Train Loss: 4.7822, Val Loss: 4.9968
+Best model saved!
+Epoch: 9, Train Loss: 4.6873, Val Loss: 4.9497
+Best model saved!
+Epoch: 10, Train Loss: 4.5938, Val Loss: 4.9552
+Early stopping counter: 1/3
+Epoch: 11, Train Loss: 4.5042, Val Loss: 4.8975
+Best model saved!
+Epoch: 12, Train Loss: 4.4181, Val Loss: 4.8303
+Best model saved!
+Epoch: 13, Train Loss: 4.3272, Val Loss: 4.7968
+Best model saved!
+Epoch: 14, Train Loss: 4.2366, Val Loss: 4.6997
+Best model saved!
+Epoch: 15, Train Loss: 4.1423, Val Loss: 4.6335
+Best model saved!
+Epoch: 16, Train Loss: 4.0488, Val Loss: 4.6040
+Best model saved!
+Epoch: 17, Train Loss: 3.9518, Val Loss: 4.5278
+Best model saved!
+Epoch: 18, Train Loss: 3.8518, Val Loss: 4.4357
+Best model saved!
+Epoch: 19, Train Loss: 3.7443, Val Loss: 4.3370
+Best model saved!
+Epoch: 20, Train Loss: 3.6225, Val Loss: 4.2191
+Best model saved!
+
+Time taken for training and valiation, hours:3.0, minutes:19.0
+Mean Squared Error (MSE): 1.0280
+Root Mean Squared Error (RMSE): 1.0139
+Mean Absolute Error (MAE): 0.7122
+False False
+2025-03-08 07:02:00.474721: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-08 07:02:00.578105: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-08 07:02:01.600867: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+
+Dataset: yelp
+False
+True
+Training started
+yelp_False_Truebest_model.pth
+Epoch: 1, Train Loss: 5.5063, Val Loss: 4.8509
+Best model saved!
+Epoch: 2, Train Loss: 4.5549, Val Loss: 3.6821
+Best model saved!
+Epoch: 3, Train Loss: 3.1818, Val Loss: 2.6464
+Best model saved!
+Epoch: 4, Train Loss: 2.6685, Val Loss: 2.5108
+Best model saved!
+Epoch: 5, Train Loss: 2.5485, Val Loss: 2.4770
+Best model saved!
+Epoch: 6, Train Loss: 2.5019, Val Loss: 2.4615
+Best model saved!
+Epoch: 7, Train Loss: 2.4624, Val Loss: 2.4379
+Best model saved!
+Epoch: 8, Train Loss: 2.4305, Val Loss: 2.4415
+Early stopping counter: 1/3
+Epoch: 9, Train Loss: 2.4062, Val Loss: 2.4095
+Best model saved!
+Epoch: 10, Train Loss: 2.3857, Val Loss: 2.4232
+Early stopping counter: 1/3
+Epoch: 11, Train Loss: 2.3686, Val Loss: 2.4083
+Best model saved!
+Epoch: 12, Train Loss: 2.3525, Val Loss: 2.4122
+Early stopping counter: 1/3
+Epoch: 13, Train Loss: 2.3399, Val Loss: 2.4040
+Best model saved!
+Epoch: 14, Train Loss: 2.3275, Val Loss: 2.3968
+Best model saved!
+Epoch: 15, Train Loss: 2.3159, Val Loss: 2.4008
+Early stopping counter: 1/3
+Epoch: 16, Train Loss: 2.3061, Val Loss: 2.3906
+Best model saved!
+Epoch: 17, Train Loss: 2.2974, Val Loss: 2.3958
+Early stopping counter: 1/3
+Epoch: 18, Train Loss: 2.2881, Val Loss: 2.3934
+Early stopping counter: 2/3
+Epoch: 19, Train Loss: 2.2792, Val Loss: 2.3889
+Best model saved!
+Epoch: 20, Train Loss: 2.2710, Val Loss: 2.3917
+Early stopping counter: 1/3
+
+Time taken for training and valiation, hours:27.0, minutes:44.0
+Mean Squared Error (MSE): 0.5132
+Root Mean Squared Error (RMSE): 0.7164
+Mean Absolute Error (MAE): 0.5089
+False True
+
+Dataset: amz_mt
+../data/Amazon/MoviesAndTV/amz_mt.csv
+7209 3018
+False
+True
+Training started
+amz_mt_False_Truebest_model.pth
+Epoch: 1, Train Loss: 7.3852, Val Loss: 6.6522
+Best model saved!
+Epoch: 2, Train Loss: 6.5155, Val Loss: 6.2990
+Best model saved!
+Epoch: 3, Train Loss: 6.2078, Val Loss: 6.1125
+Best model saved!
+Epoch: 4, Train Loss: 5.9974, Val Loss: 5.9785
+Best model saved!
+Epoch: 5, Train Loss: 5.8330, Val Loss: 5.8793
+Best model saved!
+Epoch: 6, Train Loss: 5.6959, Val Loss: 5.7904
+Best model saved!
+Epoch: 7, Train Loss: 5.5760, Val Loss: 5.7504
+Best model saved!
+Epoch: 8, Train Loss: 5.4694, Val Loss: 5.6992
+Best model saved!
+Epoch: 9, Train Loss: 5.3701, Val Loss: 5.6482
+Best model saved!
+Epoch: 10, Train Loss: 5.2765, Val Loss: 5.6093
+Best model saved!
+Epoch: 11, Train Loss: 5.1910, Val Loss: 5.5746
+Best model saved!
+Epoch: 12, Train Loss: 5.1072, Val Loss: 5.5300
+Best model saved!
+Epoch: 13, Train Loss: 5.0212, Val Loss: 5.4564
+Best model saved!
+Epoch: 14, Train Loss: 4.9357, Val Loss: 5.4091
+Best model saved!
+Epoch: 15, Train Loss: 4.8442, Val Loss: 5.3871
+Best model saved!
+Epoch: 16, Train Loss: 4.7497, Val Loss: 5.3016
+Best model saved!
+Epoch: 17, Train Loss: 4.6534, Val Loss: 5.2253
+Best model saved!
+Epoch: 18, Train Loss: 4.5555, Val Loss: 5.1455
+Best model saved!
+Epoch: 19, Train Loss: 4.4547, Val Loss: 5.0510
+Best model saved!
+Epoch: 20, Train Loss: 4.3477, Val Loss: 4.9609
+Best model saved!
+
+Time taken for training and valiation, hours:3.0, minutes:21.0
+Mean Squared Error (MSE): 1.0022
+Root Mean Squared Error (RMSE): 1.0011
+Mean Absolute Error (MAE): 0.7022
+False True
+Average BLEU1: 11.3245
+Average BLEU4: 4.4739
+Average ROUGE-1 f1: 13.2619, R:12.0142, P:15.4153
+Average ROUGE-2 f1: 5.1213,R: 4.7845, P:5.6604
+Average ROUGE-L f1:: 12.2968,R: 11.1529,P: 14.2741
+2025-03-23 18:14:12.875075: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-23 18:14:12.952982: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-23 18:14:15.535081: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+
+Dataset: amz_mt
+../data/Amazon/MoviesAndTV/amz_mt.csv
+7209 3018
+False
+False
+Training started
+amz_mt_False_Falsebest_model.pth
+Epoch: 1, Train Loss: 6.7179, Val Loss: 5.9724
+Best model saved!
+Epoch: 2, Train Loss: 5.8377, Val Loss: 5.6052
+Best model saved!
+Epoch: 3, Train Loss: 5.5225, Val Loss: 5.4154
+Best model saved!
+Epoch: 4, Train Loss: 5.3151, Val Loss: 5.2832
+Best model saved!
+Epoch: 5, Train Loss: 5.1476, Val Loss: 5.1752
+Best model saved!
+Epoch: 6, Train Loss: 5.0111, Val Loss: 5.1453
+Best model saved!
+Epoch: 7, Train Loss: 4.8914, Val Loss: 5.0632
+Best model saved!
+Epoch: 8, Train Loss: 4.7850, Val Loss: 4.9896
+Best model saved!
+Epoch: 9, Train Loss: 4.6910, Val Loss: 4.9733
+Best model saved!
+Epoch: 10, Train Loss: 4.6009, Val Loss: 4.9427
+Best model saved!
+Epoch: 11, Train Loss: 4.5187, Val Loss: 4.9218
+Best model saved!
+Epoch: 12, Train Loss: 4.4416, Val Loss: 4.8852
+Best model saved!
+Epoch: 13, Train Loss: 4.3664, Val Loss: 4.8564
+Best model saved!
+Epoch: 14, Train Loss: 4.2933, Val Loss: 4.8280
+Best model saved!
+Epoch: 15, Train Loss: 4.2220, Val Loss: 4.7802
+Best model saved!
+Epoch: 16, Train Loss: 4.1499, Val Loss: 4.7645
+Best model saved!
+Epoch: 17, Train Loss: 4.0736, Val Loss: 4.6860
+Best model saved!
+Epoch: 18, Train Loss: 3.9977, Val Loss: 4.6410
+Best model saved!
+Epoch: 19, Train Loss: 3.9162, Val Loss: 4.5744
+Best model saved!
+Epoch: 20, Train Loss: 3.8339, Val Loss: 4.5323
+Best model saved!
+
+Time taken for training and valiation, hours:3.0, minutes:18.0
+Mean Squared Error (MSE): 0.9980
+Root Mean Squared Error (RMSE): 0.9990
+Mean Absolute Error (MAE): 0.6946
+False False
+Average BLEU1: 11.5543
+Average BLEU4: 4.0550
+Average ROUGE-1 f1: 13.1357, R:11.9980, P:14.8541
+Average ROUGE-2 f1: 4.5628,R: 4.3203, P:4.9035
+Average ROUGE-L f1:: 12.0320,R: 10.9989,P: 13.5945
+
+2025-03-24 08:03:34.949714: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-24 08:03:35.041963: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-24 08:03:36.139927: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+
+Dataset: trip_review_xplns
+../data/TripAdvisor/trip_review_xplns.csv
+9765 6280
+False
+False
+Training started
+trip_review_xplns_False_Falsebest_model.pth
+Epoch: 1, Train Loss: 5.3760, Val Loss: 4.6745
+Best model saved!
+Epoch: 2, Train Loss: 4.5794, Val Loss: 4.3612
+Best model saved!
+Epoch: 3, Train Loss: 4.3229, Val Loss: 4.1888
+Best model saved!
+Epoch: 4, Train Loss: 4.1535, Val Loss: 4.0632
+Best model saved!
+Epoch: 5, Train Loss: 4.0225, Val Loss: 3.9627
+Best model saved!
+Epoch: 6, Train Loss: 3.9129, Val Loss: 3.9143
+Best model saved!
+Epoch: 7, Train Loss: 3.8173, Val Loss: 3.8382
+Best model saved!
+Epoch: 8, Train Loss: 3.7110, Val Loss: 3.7049
+Best model saved!
+Epoch: 9, Train Loss: 3.5413, Val Loss: 3.4676
+Best model saved!
+Epoch: 10, Train Loss: 3.2779, Val Loss: 3.1336
+Best model saved!
+Epoch: 11, Train Loss: 2.9562, Val Loss: 2.7628
+Best model saved!
+Epoch: 12, Train Loss: 2.6240, Val Loss: 2.4370
+Best model saved!
+Epoch: 13, Train Loss: 2.3470, Val Loss: 2.2526
+Best model saved!
+Epoch: 14, Train Loss: 2.1608, Val Loss: 2.1088
+Best model saved!
+Epoch: 15, Train Loss: 2.0416, Val Loss: 2.0535
+Best model saved!
+Epoch: 16, Train Loss: 1.9616, Val Loss: 2.0290
+Best model saved!
+Epoch: 17, Train Loss: 1.9050, Val Loss: 1.9837
+Best model saved!
+Epoch: 18, Train Loss: 1.8604, Val Loss: 1.9782
+Best model saved!
+Epoch: 19, Train Loss: 1.8244, Val Loss: 1.9685
+Best model saved!
+Epoch: 20, Train Loss: 1.7944, Val Loss: 1.9683
+Best model saved!
+
+Time taken for training and valiation, hours:6.0, minutes:51.0
+Mean Squared Error (MSE): 0.4911
+Root Mean Squared Error (RMSE): 0.7008
+Mean Absolute Error (MAE): 0.5195
+False False
+Average BLEU1: 11.3343
+Average BLEU4: 4.6941
+Average ROUGE-1 f1: 12.8657, R:11.9224, P:14.2003
+Average ROUGE-2 f1: 4.5178,R: 4.1680, P:4.9886
+Average ROUGE-L f1:: 11.6395,R: 10.7805,P: 12.8575
+2025-03-24 16:49:19.613600: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-24 16:49:19.706547: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-24 16:49:21.294107: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+
+Dataset: trip_review_xplns
+../data/TripAdvisor/trip_review_xplns.csv
+9765 6280
+True
+False
+Training started
+trip_review_xplns_True_Falsebest_model.pth
+Epoch: 1, Train Loss: 10.2212, Val Loss: 9.3307
+Best model saved!
+Epoch: 2, Train Loss: 9.1678, Val Loss: 8.8388
+Best model saved!
+Epoch: 3, Train Loss: 8.7376, Val Loss: 8.6183
+Best model saved!
+Epoch: 4, Train Loss: 8.4006, Val Loss: 8.4718
+Best model saved!
+Epoch: 5, Train Loss: 8.1450, Val Loss: 8.3539
+Best model saved!
+Epoch: 6, Train Loss: 7.9374, Val Loss: 8.2523
+Best model saved!
+Epoch: 7, Train Loss: 7.7614, Val Loss: 8.2002
+Best model saved!
+Epoch: 8, Train Loss: 7.6036, Val Loss: 8.2000
+Best model saved!
+Epoch: 9, Train Loss: 7.4602, Val Loss: 8.1772
+Best model saved!
+Epoch: 10, Train Loss: 7.3235, Val Loss: 8.2139
+Early stopping counter: 1/3
+Epoch: 11, Train Loss: 7.1874, Val Loss: 8.2450
+Early stopping counter: 2/3
+Epoch: 12, Train Loss: 7.0641, Val Loss: 8.3513
+Early stopping counter: 3/3
+Early stopping triggered. Stopping training.
+
+Time taken for training and valiation, hours:4.0, minutes:6.0
+Mean Squared Error (MSE): 0.4491
+Root Mean Squared Error (RMSE): 0.6701
+Mean Absolute Error (MAE): 0.5087
+True False
+Average BLEU1: 9.7772
+Average BLEU4: 1.8343
+Average ROUGE-1 f1: 10.8506, R:9.9369, P:12.1878
+Average ROUGE-2 f1: 1.3452,R: 1.2611, P:1.4616
+Average ROUGE-L f1:: 9.4213,R: 8.6278,P: 10.5902
+2025-03-26 01:49:17.553205: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-03-26 01:49:17.634221: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-03-26 01:49:18.677896: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+
+Dataset: yelp
+../data/Yelp/yelp.csv
+27147 20266
+False
+False
+Training started
+yelp_False_Falsebest_model.pth
+Epoch: 1, Train Loss: 4.8280, Val Loss: 4.1624
+Best model saved!
+Epoch: 2, Train Loss: 3.8992, Val Loss: 3.1115
+Best model saved!
+Epoch: 3, Train Loss: 2.6797, Val Loss: 2.1094
+Best model saved!
+Epoch: 4, Train Loss: 2.0951, Val Loss: 1.8826
+Best model saved!
+Epoch: 5, Train Loss: 1.9089, Val Loss: 1.7934
+Best model saved!
+Epoch: 6, Train Loss: 1.8408, Val Loss: 1.7721
+Best model saved!
+Epoch: 7, Train Loss: 1.7926, Val Loss: 1.7539
+Best model saved!
+Epoch: 8, Train Loss: 1.7555, Val Loss: 1.7382
+Best model saved!
+Epoch: 9, Train Loss: 1.7272, Val Loss: 1.7294
+Best model saved!
+Epoch: 10, Train Loss: 1.7044, Val Loss: 1.7306
+Early stopping counter: 1/3
+Epoch: 11, Train Loss: 1.6844, Val Loss: 1.7213
+Best model saved!
+Epoch: 12, Train Loss: 1.6682, Val Loss: 1.7151
+Best model saved!
+Epoch: 13, Train Loss: 1.6535, Val Loss: 1.7170
+Early stopping counter: 1/3
+Epoch: 14, Train Loss: 1.6408, Val Loss: 1.7200
+Early stopping counter: 2/3
+Epoch: 15, Train Loss: 1.6289, Val Loss: 1.7310
+Early stopping counter: 3/3
+Early stopping triggered. Stopping training.
+
+Time taken for training and valiation, hours:20.0, minutes:38.0
+Mean Squared Error (MSE): 0.5173
+Root Mean Squared Error (RMSE): 0.7192
+Mean Absolute Error (MAE): 0.5242
+False False
+Average BLEU1: 12.9423
+Average BLEU4: 7.1202
+Average ROUGE-1 f1: 15.1471, R:13.7795, P:17.1202
+Average ROUGE-2 f1: 7.6800,R: 6.9396, P:8.7606
+Average ROUGE-L f1:: 14.2876,R: 12.9900,P: 16.1652
+Average BLEU1: 12.9423
+Average BLEU4: 7.1202
+Average ROUGE-1 F1: 15.1471, R: 13.7795, P: 17.1202
+Average ROUGE-2 F1: 7.6800, R: 6.9396, P: 8.7606
+Average ROUGE-L F1: 14.2876, R: 12.9900, P: 16.1652
+
+Dataset: trip_review_xplns
+../data/TripAdvisor/trip_review_xplns.csv
+9765 6280
+False
+True
+Training started
+trip_review_xplns_False_Truebest_model.pth
+Epoch: 1, Train Loss: 6.0502, Val Loss: 5.3382
+Best model saved!
+Epoch: 2, Train Loss: 5.2585, Val Loss: 5.0327
+Best model saved!
+Epoch: 3, Train Loss: 4.9997, Val Loss: 4.8677
+Best model saved!
+Epoch: 4, Train Loss: 4.8286, Val Loss: 4.7264
+Best model saved!
+Epoch: 5, Train Loss: 4.6991, Val Loss: 4.6666
+Best model saved!
+Epoch: 6, Train Loss: 4.5929, Val Loss: 4.6019
+Best model saved!
+Epoch: 7, Train Loss: 4.4854, Val Loss: 4.4810
+Best model saved!
+Epoch: 8, Train Loss: 4.3291, Val Loss: 4.2408
+Best model saved!
+Epoch: 9, Train Loss: 4.0674, Val Loss: 3.9115
+Best model saved!
+Epoch: 10, Train Loss: 3.7511, Val Loss: 3.5343
+Best model saved!
+Epoch: 11, Train Loss: 3.4043, Val Loss: 3.1996
+Best model saved!
+Epoch: 12, Train Loss: 3.0925, Val Loss: 2.9619
+Best model saved!
+Epoch: 13, Train Loss: 2.8813, Val Loss: 2.8128
+Best model saved!
+Epoch: 14, Train Loss: 2.7533, Val Loss: 2.7537
+Best model saved!
+Epoch: 15, Train Loss: 2.6720, Val Loss: 2.7191
+Best model saved!
+Epoch: 16, Train Loss: 2.6138, Val Loss: 2.7037
+Best model saved!
+Epoch: 17, Train Loss: 2.5671, Val Loss: 2.6798
+Best model saved!
+Epoch: 18, Train Loss: 2.5315, Val Loss: 2.6470
+Best model saved!
+Epoch: 19, Train Loss: 2.5001, Val Loss: 2.6610
+Early stopping counter: 1/3
+Epoch: 20, Train Loss: 2.4736, Val Loss: 2.6447
+Best model saved!
+
+Time taken for training and valiation, hours:6.0, minutes:51.0
+Mean Squared Error (MSE): 0.4633
+Root Mean Squared Error (RMSE): 0.6807
+Mean Absolute Error (MAE): 0.5068
+False True
+Skipping pair due to error: Hypothesis is empty.
+Skipping pair due to error: Reference is empty.
+Skipping pair due to error: Hypothesis is empty.
+Skipping pair due to error: Hypothesis is empty.
+Skipping pair due to error: Hypothesis is empty.
+Skipping pair due to error: Hypothesis is empty.
+Skipping pair due to error: Hypothesis is empty.
+Average BLEU1: 11.5212
+Average BLEU4: 4.7981
+Average ROUGE-1 F1: 12.9084, R: 12.0392, P: 14.1342
+Average ROUGE-2 F1: 4.5378, R: 4.2564, P: 4.9127
+Average ROUGE-L F1: 11.7077, R: 10.9197, P: 12.8206
+Skipping pair due to error: Reference is empty.
+Skipping pair due to error: Hypothesis is empty.
+Average BLEU1: 9.7772
+Average BLEU4: 1.8343
+Average ROUGE-1 F1: 10.8506, R: 9.9369, P: 12.1878
+Average ROUGE-2 F1: 1.3452, R: 1.2611, P: 1.4616
+Average ROUGE-L F1: 9.4213, R: 8.6278, P: 10.5902
