@@ -44,6 +44,7 @@ Your directory should look like this:
 |    ├── trip_preprocessing.py
 |    ├── amztv_preprocessing.py
 |    ├── yelp_preprocessing.py
+|    ├── aspect_embedder.py
 |    ├── NRTPlus.py
 |--results/
 │   ├── tripAdvisor/
@@ -69,6 +70,8 @@ Run the following scripts to preprocess the datasets. These scripts generate int
 python trip_preprocessing.py
 python amztv_preprocessing.py
 python yelp_preprocessing.py
+python aspect_embedder.py
+
 ```
 
 ---
