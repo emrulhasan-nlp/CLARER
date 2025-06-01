@@ -15,8 +15,8 @@ Download the dataset from the following Google Drive link:
 
 Place the `review.pickle` file inside each of the following folders:
 
-- `tripAdvisor`
-- `amazonTV`
+- `tripr`
+- `amzMT`
 - `yelp`
 
 Your directory should look like this:
@@ -24,40 +24,41 @@ Your directory should look like this:
 ```
 .
 ├── rawdata/
-│   ├── tripAdvisor/
+│   ├── trip/
 │   │   ├── OriginalReviews.json
 │   │   └── review.pickle
-│   ├── amazonTV/
+│   ├── amzMT/
 │   │   ├── Movies_and_TV.json
 │   │   └── review.pickle
 │   └── yelp/
 │       ├── yelp_academic_dataset_review.json
 │       └── review.pickle
 ├── prepdata/
-│   ├── tripAdvisor/
+│   ├── trip/
 │   │   ├── tripdata.csv
 |   |   └── trip_emb.npy
-│   ├── amazonTV/
-│   │   ├── amz_tv.csv
+│   ├── amzMT/
+│   │   ├── amzMT.csv
 |   |   └── amz_emb.npy
 │   └── yelp/
 │       ├── yelp.csv
 |       └── yelp_emb.npy
 ├──codes/
 |    ├── trip_preprocessing.py
-|    ├── amztv_preprocessing.py
+|    ├── amzMT_preprocessing.py
 |    ├── yelp_preprocessing.py
 |    ├── aspect_embedder.py
-|    ├── NRTPlus.py
+|    ├── CLARER_ratingPred.py
+|    └── CLARER_exp.py
 |--results/
-│   ├── tripAdvisor/
-│   │   └── tripdmodel.pth
+│   ├── trip/
+│   │   └── trip_model.pth
 |   |   └── trip.logs
-│   ├── amazonTV/
-│   │   └── amz_tvmodel.pth
-|   |   └── amz_tv.logs
+│   ├── amzMT/
+│   │   └── amzMT_model.pth
+|   |   └── amzMT.logs
 │   └── yelp/
-│       |── yelpmodel.pth
+│       |── yelp_model.pth
 |       └── yelp.logs
 |
 └── README.md
@@ -71,7 +72,7 @@ Run the following scripts to preprocess the datasets. These scripts generate int
 
 ```bash
 python trip_preprocessing.py
-python amztv_preprocessing.py
+python amzMT_preprocessing.py
 python yelp_preprocessing.py
 python aspect_embedder.py
 
@@ -84,7 +85,8 @@ python aspect_embedder.py
 After preprocessing, use the following command to run the model:
 
 ```bash
-python NRTPlus.py --dataset yelp.csv
+python CLARER_ratingPred.py --dataset yelp.csv
+python CLARER_exp.py --dataset yelp.csv
 ```
 
 > Replace `yelp.csv` with `tripdata.csv` or `amz_tv.csv` based on the dataset you're using.
@@ -107,8 +109,9 @@ pip install -r requirements.txt
 CLARER/
 ├── rawdata/
 ├── prepdata/
-├── *.py              # Scripts for preprocessing and training
-├── README.md         # This file
+├── codes/
+├── results/
+├── README.md
 └── requirements.txt  # Dependencies
 ```
 
