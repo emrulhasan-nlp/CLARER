@@ -1,48 +1,95 @@
-import pickle 
+import pickle
 import pandas as pd
 import json
 import csv
+from typing import List
 
-# Yelp review file that contains explanation but original review is missing
-yelp_path="../rawdata/yelp/reviews.pickle"
 
-with open(yelp_path, 'rb') as f:
-    yelp_reviews = pickle.load(f)
+# =============================== #
+#           Config                #
+# =============================== #
 
-yelp_revdf=pd.DataFrame(yelp_reviews)
+YELP_PICKLE_PATH = "../rawdata/yelp/reviews.pickle"
+YELP_JSON_PATH = "../rawdata/yelp/yelp_academic_dataset_review.json"
+YELP_CSV_PATH = "../rawdata/yelp/yelp_review.csv"
+YELP_FINAL_OUTPUT = "../prepdata/yelp/yelp.csv"
 
-yelp_revdf=yelp_revdf.drop(columns=['predicted'])
-explanations=[exp for _, _, exp, _ in yelp_revdf['template']]
-yelp_revdf['explanation']=explanations
-yelp_revdf.drop(columns=['template'], inplace=True)
 
-############Original Review #################
-def convert_json_to_csv(json_file_path, csv_file_path):
-    with open(json_file_path, 'r', encoding='utf-8') as json_file, \
-            open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
+# =============================== #
+#         Utility Functions       #
+# =============================== #
 
-        csv_writer = csv.writer(csv_file)
-        csv_writer.writerow(['user_id', 'business_id', 'text', 'stars'])  # Header row
+def load_pickle_dataframe(path: str) -> pd.DataFrame:
+    """Load a pickle file and return a cleaned DataFrame with extracted explanations."""
+    with open(path, 'rb') as f:
+        reviews = pickle.load(f)
+
+    df = pd.DataFrame(reviews)
+    df.drop(columns=['predicted'], errors='ignore', inplace=True)
+
+    # Extract explanation from template
+    explanations = []
+    for item in df['template']:
+        try:
+            _, _, exp, _ = item
+            explanations.append(exp)
+        except (ValueError, TypeError):
+            explanations.append("")
+            print(f"[Warning] Skipping invalid template: {item}")
+    df['explanation'] = explanations
+
+    df.drop(columns=['template'], inplace=True)
+    return df
+
+
+def convert_json_to_csv(json_input_path: str, csv_output_path: str):
+    """Convert Yelp JSON lines to structured CSV."""
+    with open(json_input_path, 'r', encoding='utf-8') as json_file, \
+         open(csv_output_path, 'w', newline='', encoding='utf-8') as csv_file:
+
+        writer = csv.writer(csv_file)
+        writer.writerow(['user_id', 'business_id', 'text', 'stars'])
 
         for line in json_file:
             try:
                 data = json.loads(line)
-                user_id = data.get('user_id', '')
-                business_id = data.get('business_id', '')
-                text = data.get('text', '')
-                stars = data.get('stars', '')
-                csv_writer.writerow([user_id, business_id, text, stars])
+                writer.writerow([
+                    data.get('user_id', ''),
+                    data.get('business_id', ''),
+                    data.get('text', ''),
+                    data.get('stars', '')
+                ])
             except json.JSONDecodeError as e:
-                print(f"Skipping invalid JSON line: {e}")
+                print(f"[Warning] Skipping invalid JSON line: {e}")
+    print(f"[Success] JSON converted to CSV: {csv_output_path}")
 
-# Convert the json to csv file
-json_file_path = '../rawdata/yelp/yelp_academic_dataset_review.json'
-csv_file_path = '../rawdata/yelp/yelp_review.csv'
-convert_json_to_csv(json_file_path, csv_file_path)
-print(f"Conversion complete. CSV file saved to: {csv_file_path}")
 
-df=pd.read_csv('../rawdata/yelp/yelp_review.csv')
-df=df.rename(columns={'user_id':'user', "business_id":'item', 'stars': 'rating'})
+def load_and_prepare_yelp_csv(csv_path: str) -> pd.DataFrame:
+    """Load and prepare Yelp CSV file."""
+    df = pd.read_csv(csv_path)
+    df.rename(columns={
+        'user_id': 'user',
+        'business_id': 'item',
+        'stars': 'rating'
+    }, inplace=True)
+    return df
 
-merged_df = pd.merge(yelp_revdf,df, on=['user', 'item'], how='inner')
-merged_df.to_csv('../prepdata/yelp/yelp.csv', index=False)
+
+# =============================== #
+#              Main               #
+# =============================== #
+
+if __name__ == "__main__":
+    # Step 1: Load explanation-enhanced reviews
+    yelp_df = load_pickle_dataframe(YELP_PICKLE_PATH)
+
+    # Step 2: Convert JSON reviews to CSV if needed
+    convert_json_to_csv(YELP_JSON_PATH, YELP_CSV_PATH)
+
+    # Step 3: Load original Yelp review CSV
+    review_df = load_and_prepare_yelp_csv(YELP_CSV_PATH)
+
+    # Step 4: Merge and save final dataset
+    final_df = pd.merge(yelp_df, review_df, on=['user', 'item'], how='inner')
+    final_df.to_csv(YELP_FINAL_OUTPUT, index=False)
+    print(f"[Success] Final Yelp dataset saved: {YELP_FINAL_OUTPUT}")

@@ -1,85 +1,85 @@
-import pandas as pd
 import re
-from utils import bleu_score, rouge_scores
+from rouge import Rouge
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 
 def parse_ground_truth_generated(text):
+    """Extract (ground truth, generated) text pairs from a structured text block."""
+    pattern = r"Ground Truth:\s*(.*?)\s*\nGenerated:\s*(.*?)\s*(?:\n-+|$)"
+    return [(gt.strip(), gen.strip()) for gt, gen in re.findall(pattern, text, re.DOTALL)]
 
-    pattern = r"Ground Truth:\s*(.*?)\nGenerated:\s*(.*?)\n-+"
-    matches = re.findall(pattern, text, re.DOTALL)
-    return [(gt.strip(), gen.strip()) for gt, gen in matches]
+def rouge_scores(reference, generated):
+    """Calculate ROUGE-1, ROUGE-2, and ROUGE-L scores (precision, recall, F1)."""
+    rouge = Rouge()
+    scores = rouge.get_scores(generated, reference)
+    s = scores[0]
+    return {
+        'rouge_1': s['rouge-1'],
+        'rouge_2': s['rouge-2'],
+        'rouge_l': s['rouge-l'],
+    }
 
-#data='./1.5_criteriaFalse_aspectTrue_xpltest.txt'
-#data='./criteriaFalse_aspectTrue_xpltest.txt'
-#data='./yelp_1.0_criteriaFalse_aspectTrue_xpltest.txt'
-#data='./amz_mt_1.0_criteriaFalse_aspectFalse_xpltest.txt'
+def bleu_score(references, generated, n_gram=4, smooth=True):
+    """Compute BLEU score for a single prediction with optional smoothing."""
+    refs_tokens = [ref.split() for ref in references]
+    gen_tokens = generated.split()
+    weights = tuple((1.0 / n_gram,) * n_gram)
+    smoother = SmoothingFunction().method4 if smooth else None
+    score = sentence_bleu(refs_tokens, gen_tokens, weights=weights, smoothing_function=smoother)
+    return score * 100
 
-#data='./trip_review_xplns_1.0_criteriaFalse_aspectFalse_xpltest.txt'
-
-data='./yelp_1.0_criteriaFalse_aspectFalse_xpltest.txt'
-
-#data='./trip_review_xplns_1.0_criteriaTrue_aspectFalse_xpltest.txt'
-
-with open(data, "r", encoding="utf-8") as file:
-    text = file.read()
-
-gt_gen_pairs = parse_ground_truth_generated(text)
-
-filtered_pairs = []
-for tgt, gen in gt_gen_pairs:
-    if len(tgt) != 0 or len(gen) != 0:
-        filtered_pairs.append((tgt, gen))
-
-bleu_scores1, bleu_scores4 = [],[]
-rouge1_F1_scores, rouge2_F1_scores, rougeL_F1_scores = [], [], []
-rouge1_R_scores, rouge2_R_scores, rougeL_R_scores = [], [], []
-rouge1_P_scores, rouge2_P_scores, rougeL_P_scores = [], [], []
-
-for explanation, predicted_explanation in filtered_pairs:
-    
-    bleu1 = bleu_score([explanation], [predicted_explanation], n_gram=1)
-    bleu_scores1.append(bleu1)
-
-    bleu4 = bleu_score([explanation], [predicted_explanation], n_gram=4)
-    bleu_scores4.append(bleu4)
-    try:
-      result_scores = rouge_scores(explanation, predicted_explanation)
-    except:
-      #print("Error: One or both explanations are empty or contain only whitespace. Skipping this pair.")
-      continue  # Skip this pair and move to the next
-    rouge1_F1_scores.append(result_scores['rouge_1/f_score'])
-    rouge1_R_scores.append(result_scores['rouge_1/recall'])
-    rouge1_P_scores.append(result_scores['rouge_1/precision'])
-
-    rouge2_F1_scores.append(result_scores['rouge_2/f_score'])
-    rouge2_R_scores.append(result_scores['rouge_2/recall'])  
-    rouge2_P_scores.append(result_scores['rouge_2/precision'])
-
-    rougeL_F1_scores.append(result_scores['rouge_l/f_score'])
-    rougeL_R_scores.append(result_scores['rouge_l/recall']) 
-    rougeL_P_scores.append(result_scores['rouge_l/precision'])
-
-# Compute averages safely to avoid ZeroDivisionError
 def safe_average(scores):
-    return sum(scores) / len(scores) if scores else 0  # Avoid division by zero
+    """Return the average or zero if the list is empty."""
+    return sum(scores) / len(scores) if scores else 0
 
-avg_bleu1 = safe_average(bleu_scores1)
-avg_bleu4 = safe_average(bleu_scores4)
+# === CONFIGURATION ===
+data_path = '../results/trip_review_xplns_1.0_criteriaTrue_aspectFalse_xpltest.txt'
 
-avg_rouge1_f = safe_average(rouge1_F1_scores)
-avg_rouge2_f = safe_average(rouge2_F1_scores)
-avg_rougeL_f = safe_average(rougeL_F1_scores)
+# === READ FILE ===
+try:
+    with open(data_path, "r", encoding="utf-8") as f:
+        raw_text = f.read()
+except FileNotFoundError:
+    print(f"Error: File '{data_path}' not found.")
+    exit()
 
-avg_rouge1_R = safe_average(rouge1_R_scores)
-avg_rouge2_R = safe_average(rouge2_R_scores)
-avg_rougeL_R = safe_average(rougeL_R_scores)
+# === PARSE TEXT ===
+pairs = parse_ground_truth_generated(raw_text)
+pairs = [(gt, gen) for gt, gen in pairs if gt and gen]
 
-avg_rouge1_P = safe_average(rouge1_P_scores)
-avg_rouge2_P = safe_average(rouge2_P_scores)
-avg_rougeL_P = safe_average(rougeL_P_scores)
+if not pairs:
+    print("No valid ground truth-generated pairs found. Exiting.")
+    exit()
 
-print(f"Average BLEU1: {avg_bleu1:.4f}")
-print(f"Average BLEU4: {avg_bleu4:.4f}")
+# === METRIC COLLECTION ===
+metrics = {
+    'bleu1': [],
+    'bleu4': [],
+    'rouge_1/f': [], 'rouge_1/p': [], 'rouge_1/r': [],
+    'rouge_2/f': [], 'rouge_2/p': [], 'rouge_2/r': [],
+    'rouge_l/f': [], 'rouge_l/p': [], 'rouge_l/r': [],
+}
 
-print(f"Average ROUGE-1 f1: {avg_rouge1_f:.4f}, R:{avg_rouge1_R:.4f}, P:{avg_rouge1_P:.4f}")
-print(f"Average ROUGE-2 f1: {avg_rouge2_f:.4f},R: {avg_rouge2_R:.4f}, P:{avg_rouge2_P:.4f}")
-print(f"Average ROUGE-L f1:: {avg_rougeL_f:.4f},R: {avg_rougeL_R:.4f},P: {avg_rougeL_P:.4f}")
+for reference, generated in pairs:
+    metrics['bleu1'].append(bleu_score([reference], generated, n_gram=1))
+    metrics['bleu4'].append(bleu_score([reference], generated, n_gram=4))
+
+    try:
+        r_scores = rouge_scores([reference], [generated])
+    except Exception as e:
+        print(f"Skipping pair due to error: {e}")
+        continue
+
+    for key in ['rouge_1', 'rouge_2', 'rouge_l']:
+        metrics[f"{key}/f"].append(r_scores[key]['f'] * 100)
+        metrics[f"{key}/p"].append(r_scores[key]['p'] * 100)
+        metrics[f"{key}/r"].append(r_scores[key]['r'] * 100)
+
+# === REPORT ===
+print(f"Average BLEU-1: {safe_average(metrics['bleu1']):.4f}")
+print(f"Average BLEU-4: {safe_average(metrics['bleu4']):.4f}")
+
+for key in ['rouge_1', 'rouge_2', 'rouge_l']:
+    f1 = safe_average(metrics[f"{key}/f"])
+    p = safe_average(metrics[f"{key}/p"])
+    r = safe_average(metrics[f"{key}/r"])
+    print(f"Average {key.upper()} F1: {f1:.4f}, R: {r:.4f}, P: {p:.4f}")

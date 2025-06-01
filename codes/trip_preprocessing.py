@@ -2,114 +2,129 @@ import json
 import string
 import pandas as pd
 import csv
-##############Get the review data###############
-def is_english_simple(text):
-    # Define English letters and common punctuation
-    english_chars = set(string.ascii_letters + string.whitespace + string.punctuation)
-    # Check if all characters in the text are part of English characters
-    return all(char in english_chars for char in text)
-def align_subratings(reviews, predefined_subratings):
-    """
-    Aligns subratings in a list of review dictionaries by filling missing subratings with 0.
+import pickle
+from typing import Dict, List
 
-    :param reviews: List of dictionaries, each containing a 'subRatings' dictionary
-    :param predefined_subratings: List of predefined subrating categories
-    :return: List of dictionaries with aligned subratings
-    """
+# =============================== #
+#           Config                #
+# =============================== #
 
-    subratings = reviews.get('subRatings', {})
-    # Fill missing subratings with 0
-    aligned_subratings = {key: subratings.get(key, 0) for key in predefined_subratings}
-    reviews['subRatings'] = aligned_subratings
+PREDEFINED_SUBRATINGS = ['Value', 'Location', 'Sleep Quality', 'Rooms', 'Cleanliness', 'Service']
+REVIEW_JSON_PATH = '../rawdata/trip/OriginalReviews.json'
+RAW_CSV_PATH = '../rawdata/trip/rawreview.csv'
+EXPLANATION_PICKLE_PATH = '../rawdata/trip/reviews.pickle'
+EXPLANATION_CSV_PATH = '../rawdata/trip/tripdata.csv'
+MERGED_CSV_PATH = '../prepdata/trip/trip_review_xplns.csv'
 
-    return reviews
 
-# Example usage
-predefined_subratings = ['Value', 'Location', 'Sleep Quality', 'Rooms', 'Cleanliness', 'Service']
+# =============================== #
+#         Utility Functions       #
+# =============================== #
 
-reviews ={'subRatings': {'Location': 5, 'Rooms': 5, 'Service': 5}}
-aligned_reviews = align_subratings(reviews, predefined_subratings)
-review_dir='../rawdata/tripAdvisor/OriginalReviews.json'
-try:
-    with open(review_dir, 'r') as f:
-        try:
-            reviews=[]
+def is_english_simple(text: str) -> bool:
+    """Check if the text contains only English letters and common punctuation."""
+    allowed_chars = set(string.ascii_letters + string.whitespace + string.punctuation)
+    return all(char in allowed_chars for char in text)
+
+
+def align_subratings(review: Dict, predefined_keys: List[str]) -> Dict:
+    """Ensure all predefined subratings are present in each review."""
+    subratings = review.get('subRatings', {})
+    aligned = {key: subratings.get(key, 0) for key in predefined_keys}
+    review['subRatings'] = aligned
+    return review
+
+
+# =============================== #
+#       Data Processing           #
+# =============================== #
+
+def load_and_process_reviews(filepath: str) -> List[Dict]:
+    """Load reviews from JSON and align subratings."""
+    processed_reviews = []
+    try:
+        with open(filepath, 'r') as f:
             data = json.load(f)
 
-            for i, line in enumerate(data):
-              #print(line)
-              line=align_subratings(line, predefined_subratings)
-
-              text=line['reviewText']
-              user=line['userID']
-              item=line['hotelID']
-              review_text=line['reviewText']
-              rating=line['rating']
-              value=line['subRatings']['Value']
-              location=line['subRatings']['Location']
-              sleep_quality=line['subRatings']['Sleep Quality']
-              rooms=line['subRatings']['Rooms']
-              cleanliness=line['subRatings']['Cleanliness']
-              new_dct={'user':user,'item':item,'text':review_text, 'rating':rating, 'value':value, 'location':location, 'sleep_quality':sleep_quality, 'rooms':rooms, 'cleanliness':cleanliness}
-              reviews.append(new_dct)
-        except json.JSONDecodeError as e:
-            print(f"Error decoding JSON: {e}")
-except FileNotFoundError:
-    print(f"Error: File not found at {review_dir}")
-except Exception as e:
-    print(f"An error occurred: {e}")
-
-# Specify the file name
-import csv
-file_name = "../rawdata/tripAdvisor/rawreview.csv"
-
-# Writing to the CSV file
-with open(file_name, mode='w', newline='') as file:
-    writer = csv.DictWriter(file, fieldnames=reviews[0].keys())
-    writer.writeheader()  # Write the header (field names)
-    writer.writerows(reviews)  # Write the data rows
-
-print(f"CSV file '{file_name}' has been created successfully!")
-raw_df=pd.read_csv('rawreview.csv')
+            for entry in data:
+                review = align_subratings(entry, PREDEFINED_SUBRATINGS)
+                processed_reviews.append({
+                    'user': review['userID'],
+                    'item': review['hotelID'],
+                    'text': review['reviewText'],
+                    'rating': review['rating'],
+                    'value': review['subRatings']['Value'],
+                    'location': review['subRatings']['Location'],
+                    'sleep_quality': review['subRatings']['Sleep Quality'],
+                    'rooms': review['subRatings']['Rooms'],
+                    'cleanliness': review['subRatings']['Cleanliness'],
+                    'service': review['subRatings']['Service'],
+                })
+        return processed_reviews
+    except FileNotFoundError:
+        print(f"[Error] File not found: {filepath}")
+    except json.JSONDecodeError as e:
+        print(f"[Error] JSON Decode Error: {e}")
+    except Exception as e:
+        print(f"[Error] Unexpected error: {e}")
+    return []
 
 
-##########Explanation data############
+def save_csv(data: List[Dict], filepath: str):
+    """Save list of dictionaries to a CSV file."""
+    if not data:
+        print(f"[Warning] No data to write to {filepath}")
+        return
+    with open(filepath, mode='w', newline='') as file:
+        writer = csv.DictWriter(file, fieldnames=data[0].keys())
+        writer.writeheader()
+        writer.writerows(data)
+    print(f"[Success] CSV saved: {filepath}")
 
-filPath="../rawdata/tripAdvisor/reviews.pickle"
 
-with open(filPath, 'rb') as file:
-    # Load the data using pickle
-    import pickle
-    data = pickle.load(file)
-explanations=[]
-for line in data:
-  user=line['user']
-  item=line['item']
+def load_explanations(filepath: str) -> List[Dict]:
+    """Load explanation data from a pickle file."""
+    try:
+        with open(filepath, 'rb') as file:
+            data = pickle.load(file)
 
-  xpln = line['template'][2]
-  new_dct={'user':user,'item':item,'explanation':xpln}
-  explanations.append(new_dct)
+        explanations = []
+        for line in data:
+            explanations.append({
+                'user': line['user'],
+                'item': line['item'],
+                'explanation': line['template'][2]
+            })
+        return explanations
+    except FileNotFoundError:
+        print(f"[Error] Pickle file not found: {filepath}")
+    except Exception as e:
+        print(f"[Error] Failed to load pickle file: {e}")
+    return []
 
-file_name = "../rawdata/tripAdvisor/tripdata.csv"
 
-# Writing to the CSV file
-with open(file_name, mode='w', newline='') as file:
-    writer = csv.DictWriter(file, fieldnames=explanations[0].keys())
-    writer.writeheader()  # Write the header (field names)
-    writer.writerows(explanations)  # Write the data rows
+def merge_datasets(df1: pd.DataFrame, df2: pd.DataFrame, output_path: str):
+    """Merge two dataframes on user and item, remove duplicates, and save."""
+    merged = pd.merge(df1, df2, on=['user', 'item'], how='inner')
+    merged = merged.drop_duplicates(subset=['user', 'item'], keep='first')
+    merged.to_csv(output_path, index=False)
+    print(f"[Success] Merged CSV saved: {output_path}")
 
-print(f"CSV file '{file_name}' has been created successfully!")
-df=pd.read_csv('../rawdata/tripAdvisor/tripdata.csv')
 
-################## Merge explanation and review data to get the clean trip advisor data with user, item, review, rating, criteria rating, and explanation############
+# =============================== #
+#              Main               #
+# =============================== #
 
-# Merge df and raw_df based on common columns ('user' and 'item')
-merged_df = pd.merge(df, raw_df, on=['user', 'item'], how='inner')
-merged_df = merged_df.drop_duplicates(subset=['user', 'item'], keep='first')
+if __name__ == "__main__":
+    # Step 1: Load and process review data
+    reviews = load_and_process_reviews(REVIEW_JSON_PATH)
+    save_csv(reviews, RAW_CSV_PATH)
+    raw_df = pd.DataFrame(reviews)
 
-merged_file_name = "../prepdata/trip_review_xplns.csv"
+    # Step 2: Load and save explanation data
+    explanations = load_explanations(EXPLANATION_PICKLE_PATH)
+    save_csv(explanations, EXPLANATION_CSV_PATH)
+    explanation_df = pd.DataFrame(explanations)
 
-# Save the merged DataFrame to a CSV file
-merged_df.to_csv(merged_file_name, index=False)  # index=False prevents writing row indices
-
-print(f"Merged DataFrame saved to '{merged_file_name}' successfully!")
+    # Step 3: Merge both datasets and save
+    merge_datasets(explanation_df, raw_df, MERGED_CSV_PATH)

@@ -149,9 +149,9 @@ class ContrastiveLoss(nn.Module):
         return loss.mean()
 
 ###########################NRTPlus++ model, consider review and id information#####################
-class NRTPlus2(nn.Module):
+class NRTPlus(nn.Module):
     def __init__(self, num_users, num_items, src_vocab_size, tgt_vocab_size, d_model, num_heads, num_layers, d_ff, max_seq_length, dropout, hidden_dim, criteria=True, calculate_aspRep=False):
-        super(NRTPlus2, self).__init__()
+        super(NRTPlus, self).__init__()
 
         self.criteria = criteria 
         self.calculate_aspRep = calculate_aspRep
